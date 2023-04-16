@@ -34,19 +34,21 @@ class _OrganismWelcomeState extends State<OrganismWelcome> {
   }
 
   Widget _buttons(BuildContext context) {
-    return Wrap(
-      runSpacing: 20,
-      children: [
-        Button(
-          label: 'Sign In',
-          onTap: () => Navigator.pushNamed(context, ConstantRoutes.signIn),
-        ),
-        Button(
-          label: 'Sign Up',
-          onTap: () => Navigator.pushNamed(context, ConstantRoutes.signUp),
-          color: ConstantColors.gray,
-        ),
-      ],
+    return Center(
+      child: Wrap(
+        runSpacing: 20,
+        children: [
+          Button(
+            label: 'Log In',
+            onTap: () => Navigator.pushNamed(context, ConstantRoutes.signIn),
+          ),
+          Button(
+            label: 'Sign Up',
+            onTap: () => Navigator.pushNamed(context, ConstantRoutes.signUp),
+            color: ConstantColors.gray,
+          ),
+        ],
+      ),
     );
   }
 }
