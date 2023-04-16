@@ -5,6 +5,7 @@ class Button extends StatelessWidget {
   const Button({
     super.key,
     required this.label,
+    required this.onTap,
     this.color,
     this.width,
     this.height,
@@ -13,6 +14,7 @@ class Button extends StatelessWidget {
   });
 
   final String label;
+  final Function()? onTap;
   final Color? color;
   final Color? textColor;
   final double? fontSize;
@@ -22,6 +24,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Center(
         child: Container(
           width: width ?? 346,

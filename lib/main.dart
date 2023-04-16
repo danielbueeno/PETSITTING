@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:pet_sitting_project/Widgets/organisms/organism_welcome.dart';
+import 'package:pet_sitting_project/constants/constant_routes.dart';
+import 'package:pet_sitting_project/widgets/pages/page_sign_in.dart';
+import 'package:pet_sitting_project/widgets/pages/page_sign_up.dart';
+import 'package:pet_sitting_project/widgets/pages/page_welcome.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Pet Sitting App',
-      home: OrganismWelcome(),
+      initialRoute: ConstantRoutes.welcome,
+      routes: {
+        ConstantRoutes.welcome: (context) => const PageWelcome(),
+        ConstantRoutes.signIn: (context) => const PageSignIn(),
+        ConstantRoutes.signUp: (context) => const PageSignUp(),
+      },
     );
   }
 }
