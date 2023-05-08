@@ -2,4 +2,7 @@ class ConstantRoutes {
   static const welcome = '/welcome';
   static const signIn = '/signIn';
   static const signUp = '/signUp';
+  static const logged = '/logged';
+  static const message = '/message';
+  
 }

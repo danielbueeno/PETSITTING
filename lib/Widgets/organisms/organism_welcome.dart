@@ -29,7 +29,10 @@ class _OrganismWelcomeState extends State<OrganismWelcome> {
     return Container(
       width: 200,
       height: 200,
-      color: ConstantColors.gray,
+      decoration:const BoxDecoration(
+        image: DecorationImage(image: AssetImage("assets/images/logo.png"),),
+        borderRadius:BorderRadius.all(Radius.circular(8))
+      ),
     );
   }
 
