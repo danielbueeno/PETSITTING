@@ -13,7 +13,7 @@ class MoleculeMessageBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>Navigator.pushNamed(context, ConstantRoutes.message),
+      onTap: ()=>Navigator.pushNamed(context, ConstantRoutes.message, arguments:name),
       child: Container(
         width: double.infinity,
         height: 70,

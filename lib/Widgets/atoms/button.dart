@@ -11,9 +11,11 @@ class Button extends StatelessWidget {
     this.height,
     this.textColor,
     this.fontSize,
+    this.borderCircular= true,
   });
 
   final String label;
+  final bool borderCircular;
   final Function()? onTap;
   final Color? color;
   final Color? textColor;
@@ -30,7 +32,7 @@ class Button extends StatelessWidget {
         height: height ?? 54,
         decoration: BoxDecoration(
           color: color ?? ConstantColors.primary,
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
+          borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)): const BorderRadius.all(Radius.zero),
           boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(17, 24, 39, 0.07),

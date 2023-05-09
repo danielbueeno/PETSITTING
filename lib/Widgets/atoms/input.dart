@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../constants/constants_colors.dart';
 
@@ -12,6 +13,8 @@ class Input extends StatelessWidget {
     this.keyboardType,
     this.obscureText,
     this.textAlignVertical,
+    this.inputController,
+    this.borderCircular = true,
   });
 
   final double? width;
@@ -19,6 +22,8 @@ class Input extends StatelessWidget {
   final String? hintText;
   final TextInputType? keyboardType;
   final bool? obscureText;
+  final TextEditingController? inputController;
+  final bool borderCircular;
   final TextAlignVertical? textAlignVertical;
   final void Function(String)? onValueChanged;
 
@@ -28,6 +33,7 @@ class Input extends StatelessWidget {
       width: width ?? double.infinity,
       height: height ?? 40,
       child: TextFormField(
+        controller: inputController,
         textAlign: TextAlign.start,
         textAlignVertical:textAlignVertical?? TextAlignVertical.bottom,
         obscureText: obscureText ?? false,
@@ -42,17 +48,15 @@ class Input extends StatelessWidget {
               color: Colors.red,
             ) ,),
           hintText: hintText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            borderSide: BorderSide(
+          border: OutlineInputBorder(
+            borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)):const BorderRadius.all(Radius.zero),
+            borderSide: const BorderSide(
               color: ConstantColors.gray,
             ),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(5),
-            ),
-            borderSide: BorderSide(
+          focusedBorder:  OutlineInputBorder(
+            borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)):const BorderRadius.all(Radius.zero),
+            borderSide: const BorderSide(
               color: ConstantColors.primary,
             ),
 

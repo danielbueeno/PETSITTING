@@ -7,6 +7,7 @@ class PageMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TemplateMessage(body: OrganismMessage());
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+    return TemplateMessage(body: const OrganismMessage(), title:args ,);
   }
 }
