@@ -8,6 +8,7 @@ class Input extends StatelessWidget {
     super.key,
     required this.onValueChanged,
     this.width,
+    this.suffixIcon,
     this.height,
     this.hintText,
     this.keyboardType,
@@ -18,6 +19,7 @@ class Input extends StatelessWidget {
   });
 
   final double? width;
+  final Icon? suffixIcon;
   final double? height;
   final String? hintText;
   final TextInputType? keyboardType;
@@ -40,6 +42,8 @@ class Input extends StatelessWidget {
         keyboardType: keyboardType,
         onChanged: onValueChanged,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
+         suffixIconColor: ConstantColors.gray,
           errorBorder:const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(5),

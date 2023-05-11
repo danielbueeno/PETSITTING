@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/constants/constants_colors.dart';
+import 'package:pet_sitting_project/widgets/pages/page_home.dart';
 import 'package:pet_sitting_project/widgets/pages/page_messages.dart';
 import 'package:pet_sitting_project/widgets/pages/page_store.dart';
 
@@ -16,7 +17,7 @@ class TemplatePlatform extends StatefulWidget {
 class _TemplatePlatformState extends State<TemplatePlatform> {
   int _currentIndex = 0;
   List<Widget> body = const[
-    Text('home'),
+    PageHome(),
     PageMessages(),
     PageStore(),
     Text('Profile'),

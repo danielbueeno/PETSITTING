@@ -23,7 +23,6 @@ class _OrganismStoreState extends State<OrganismStore> {
             description: "Continente, pack. 10 kg",
             price: "14,49",
             image: "assets/images/dog-food.png",
-            hasTopDivider: true,
           ),
           space,
           MoleculeStoreItem(
