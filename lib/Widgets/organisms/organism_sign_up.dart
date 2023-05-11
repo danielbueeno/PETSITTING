@@ -8,6 +8,9 @@ class OrganismSignUp extends StatefulWidget {
 }
 
 class _OrganismSignUpState extends State<OrganismSignUp> {
+  final _space = const SizedBox(
+    height: 30,
+  );
   @override
   Widget build(BuildContext context) {
     return const Text('Test');
