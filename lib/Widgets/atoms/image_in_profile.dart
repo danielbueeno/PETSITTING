@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pet_sitting_project/Constants/constants_colors.dart';
 
 class ImageInProfile extends StatelessWidget {
-  const ImageInProfile({super.key});
+  var image;
+
+  ImageInProfile({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,10 @@ class ImageInProfile extends StatelessWidget {
         height: 100,
         width: 100,
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: ConstantColors.gray),
+          border: Border.all(width: 1, color: ConstantColors.white),
           image: DecorationImage(
-            image: AssetImage("assets/images/aquarium.png"),
+            image: AssetImage(image),
+            fit: BoxFit.cover,
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/Constants/constants_colors.dart';
 import 'package:pet_sitting_project/Widgets/atoms/button.dart';
 import 'package:pet_sitting_project/Widgets/atoms/image_in_profile.dart';
+import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_store_item.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_message_block.dart';
 
@@ -30,7 +31,8 @@ class _OrganismProfileState extends State<OrganismProfile> {
               Container(
                 margin: EdgeInsets.only(right: 15, top: 15),
                 child: GestureDetector(
-                    onTap: () {},
+                    onTap: () =>
+                        Navigator.pushNamed(context, ConstantRoutes.signUp),
                     child: Icon(
                       Icons.tune,
                       color: ConstantColors.primary,
@@ -116,41 +118,54 @@ class _OrganismProfileState extends State<OrganismProfile> {
           ]),
         ),
         //Container(height: 10),
-        Container(color: ConstantColors.gray, height: 2),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+            color: ConstantColors.gray,
+            height: 2,
+            margin: EdgeInsets.symmetric(horizontal: 5)),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ImageInProfile(),
-                  ImageInProfile(),
-                  ImageInProfile(),
+                  ImageInProfile(image: "assets/images/persa.jpg"),
+                  ImageInProfile(image: "assets/images/pastorAlemao2.jpg"),
+                  ImageInProfile(image: "assets/images/pastorAlemao3.jpg"),
                 ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ImageInProfile(),
-                  ImageInProfile(),
-                  ImageInProfile(),
+                  ImageInProfile(image: "assets/images/pastorAlemao4.jpg"),
+                  ImageInProfile(image: "assets/images/jack.jpg"),
+                  ImageInProfile(image: "assets/images/jack2.jpg"),
                 ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ImageInProfile(),
-                  ImageInProfile(),
-                  ImageInProfile(),
+                  ImageInProfile(image: "assets/images/dogpark.jpg"),
+                  ImageInProfile(image: "assets/images/dogEat.jpg"),
+                  ImageInProfile(image: "assets/images/dogLeash.jpg"),
                 ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ImageInProfile(),
-                  ImageInProfile(),
-                  ImageInProfile(),
+                  ImageInProfile(image: "assets/images/puppy2.jpg"),
+                  ImageInProfile(image: "assets/images/puppy.jpg"),
+                  Expanded(
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(width: 1, color: ConstantColors.white),
+                        color: ConstantColors.white,
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],

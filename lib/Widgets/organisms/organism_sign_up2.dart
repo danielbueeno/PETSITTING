@@ -113,7 +113,7 @@ class _OrganismSignUp2State extends State<OrganismSignUp2> {
     return Container(
       alignment: Alignment.bottomRight,
       child: Button(
-        label: 'Create',
+        label: 'Confirm',
         width: 80,
         height: 40,
         fontSize: 16,
