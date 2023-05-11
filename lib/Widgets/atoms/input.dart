@@ -37,33 +37,37 @@ class Input extends StatelessWidget {
       child: TextFormField(
         controller: inputController,
         textAlign: TextAlign.start,
-        textAlignVertical:textAlignVertical?? TextAlignVertical.bottom,
+        textAlignVertical: textAlignVertical ?? TextAlignVertical.bottom,
         obscureText: obscureText ?? false,
         keyboardType: keyboardType,
         onChanged: onValueChanged,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
-         suffixIconColor: ConstantColors.gray,
-          errorBorder:const OutlineInputBorder(
+          suffixIconColor: ConstantColors.gray,
+          errorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(5),
             ),
             borderSide: BorderSide(
               color: Colors.red,
-            ) ,),
+            ),
+          ),
           hintText: hintText,
           border: OutlineInputBorder(
-            borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)):const BorderRadius.all(Radius.zero),
+            borderRadius: borderCircular
+                ? const BorderRadius.all(Radius.circular(5))
+                : const BorderRadius.all(Radius.zero),
             borderSide: const BorderSide(
               color: ConstantColors.gray,
             ),
           ),
-          focusedBorder:  OutlineInputBorder(
-            borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)):const BorderRadius.all(Radius.zero),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: borderCircular
+                ? const BorderRadius.all(Radius.circular(5))
+                : const BorderRadius.all(Radius.zero),
             borderSide: const BorderSide(
               color: ConstantColors.primary,
             ),
-
           ),
         ),
       ),
