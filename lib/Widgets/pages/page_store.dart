@@ -7,8 +7,9 @@ class PageStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TemplateSearchPages(
+    return const TemplateSearchPages(
       body: OrganismStore(),
+      hasShuffle: false,
     );
   }
 }

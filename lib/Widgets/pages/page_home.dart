@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:pet_sitting_project/widgets/organisms/organism_home.dart';
+import 'package:pet_sitting_project/widgets/templates/template_search_pages.dart';
 
 class PageHome extends StatelessWidget {
   const PageHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text("Page home");
+    return const TemplateSearchPages(body: OrganismHome(), hasShuffle: true,);
   }
 }
