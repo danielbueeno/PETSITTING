@@ -10,20 +10,34 @@ class OrganismHome extends StatefulWidget {
 }
 
 class _OrganismHomeState extends State<OrganismHome> {
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: _postsList()
-    );
+    return Column(children: _postsList());
   }
 
-  _postsList(){
+  _postsList() {
     return const [
-          MoleculeHomePost(name: "Daniel Bueno",description: "some random description",profileImage: "assets/images/daniel.jpeg",postImage: "", likes: "10",),
-          MoleculeHomePost(name: "Luís Oliveira",description: "some random description",profileImage: "assets/images/luis.jpeg",postImage: "", likes: "20",),
-          MoleculeHomePost(name: "André Silva",description: "some random description",profileImage: "assets/images/andre.jpeg",postImage: "", likes: "30",),
+      MoleculeHomePost(
+        name: "Daniel Bueno",
+        description: "Rex <3",
+        profileImage: "assets/images/daniel.jpeg",
+        postImage: "assets/images/pastorAlemao.jpg",
+        likes: "10",
+      ),
+      MoleculeHomePost(
+        name: "Luís Oliveira",
+        description: "one love: Tareco",
+        profileImage: "assets/images/luis.jpeg",
+        postImage: "assets/images/persa.jpg",
+        likes: "20",
+      ),
+      MoleculeHomePost(
+        name: "André Silva",
+        description: "my big buddy",
+        profileImage: "assets/images/andre.jpeg",
+        postImage: "assets/images/saoBernardo.jpg",
+        likes: "30",
+      ),
     ];
   }
-    
 }
