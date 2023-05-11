@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/constants/constants_colors.dart';
 
-
 class MoleculePetSitterBlock extends StatelessWidget {
-  const MoleculePetSitterBlock({super.key, required this.name, required this.age, required this.likes, required this.image});
+  const MoleculePetSitterBlock(
+      {super.key,
+      required this.name,
+      required this.age,
+      required this.likes,
+      required this.image});
 
   final String name;
   final String age;
@@ -17,31 +21,60 @@ class MoleculePetSitterBlock extends StatelessWidget {
       height: 120,
       margin: const EdgeInsets.symmetric(vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      decoration:const  BoxDecoration(
-        border: Border( bottom: BorderSide(color: ConstantColors.gray)),
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: ConstantColors.gray)),
       ),
       child: Row(
         children: [
           Container(
             width: 80,
             height: 80,
-            decoration:BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               image: DecorationImage(image: AssetImage(image)),
             ),
           ),
-          const SizedBox(width: 20,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:[
-              Row(children: [const Text("Name: ", style: TextStyle(fontWeight: FontWeight.bold),),Text(name,)],),
-              Row(children: [const Text("Age: ",style: TextStyle(fontWeight: FontWeight.bold),),Text(age,),],),
-              Row(children: [const Text("Likes: ",style: TextStyle(fontWeight: FontWeight.bold),),Text(likes,),],),
-              const SizedBox(height: 5,),
-       
-            ]
+          const SizedBox(
+            width: 20,
           ),
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      age,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const Text(
+                      " years old",
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      "✮ ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      likes,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+              ]),
         ],
       ),
     );
