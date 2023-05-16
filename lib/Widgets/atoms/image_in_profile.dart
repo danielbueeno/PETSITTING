@@ -13,6 +13,9 @@ class ImageInProfile extends StatelessWidget {
     return Container(
       height: 100,
       width: 100,
+      child: GestureDetector(
+        onLongPress: () {},
+      ),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: ConstantColors.white),
         image: DecorationImage(

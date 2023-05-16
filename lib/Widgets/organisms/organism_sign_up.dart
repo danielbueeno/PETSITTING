@@ -19,64 +19,71 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 600,
+      constraints: BoxConstraints.tight(Size(340, 600)),
       margin: const EdgeInsets.symmetric(horizontal: 26),
       child: Column(
         children: [
           _space,
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(50),
-              ),
-              border: Border.all(color: ConstantColors.gray, width: 1),
-            ),
-            child: Container(
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(),
-              height: 100,
-              width: 100,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: const Icon(
-                      Icons.person,
-                      size: 60,
-                      color: ConstantColors.gray,
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(50),
                   ),
-                  Container(
-                    width: 100,
-                    height: 37,
-                    decoration: const BoxDecoration(
-                      color: ConstantColors.primary,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(80),
-                        bottomRight: Radius.circular(80),
-                      ),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        print("hello");
-                      },
-                      child: Container(
+                  border: Border.all(color: ConstantColors.gray, width: 1),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(),
+                  height: 100,
+                  width: 100,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
                         alignment: Alignment.center,
-                        child: const Text(
-                          'Select',
-                          style: TextStyle(
-                            color: ConstantColors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        child: const Icon(
+                          Icons.person,
+                          size: 60,
+                          color: ConstantColors.gray,
+                        ),
+                      ),
+                      Container(
+                        width: 100,
+                        height: 37,
+                        decoration: const BoxDecoration(
+                          color: ConstantColors.primary,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(80),
+                            bottomRight: Radius.circular(80),
+                          ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            print("hello");
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'Select',
+                              style: TextStyle(
+                                color: ConstantColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
           _space,
           _inputs,
@@ -157,8 +164,9 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         const Text('Are you a Pet Owner or Pet Sitter?'),
+        const SizedBox(height: 20),
         RadioListTile(
           title: const Text('Pet Owner'),
           value: 'pet_owner',
@@ -179,7 +187,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
             });
           },
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

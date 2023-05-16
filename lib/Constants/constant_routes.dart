@@ -5,4 +5,5 @@ class ConstantRoutes {
   static const signUp2 = '/signUp2';
   static const logged = '/logged';
   static const message = '/message';
+  static const profile = '/profile';
 }
