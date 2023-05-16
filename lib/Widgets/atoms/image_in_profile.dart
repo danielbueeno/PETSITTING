@@ -10,16 +10,14 @@ class ImageInProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: 100,
-        width: 100,
-        decoration: BoxDecoration(
-          border: Border.all(width: 1, color: ConstantColors.white),
-          image: DecorationImage(
-            image: AssetImage(image),
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      height: 100,
+      width: 100,
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: ConstantColors.white),
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.cover,
         ),
       ),
     );

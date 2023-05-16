@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/Constants/constants_colors.dart';
 import 'package:pet_sitting_project/Widgets/atoms/button.dart';
+import 'package:pet_sitting_project/Widgets/atoms/cameraButton.dart';
 import 'package:pet_sitting_project/Widgets/atoms/image_in_profile.dart';
+import 'package:pet_sitting_project/Widgets/atoms/profileText.dart';
+import 'package:pet_sitting_project/Widgets/molecules/molecule_avatar.dart';
 import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_store_item.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_message_block.dart';
@@ -41,134 +44,62 @@ class _OrganismProfileState extends State<OrganismProfile> {
               ),
             ]),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                MoleculeAvatar(
+                    name: "Mark Hunt",
+                    followers: "876",
+                    img: "assets/images/luis.jpeg"),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 57,
-                      backgroundImage: AssetImage("assets/images/luis.jpeg"),
+                    profileText(
+                      text:
+                          "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Mark Hunt",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text("876 Followers",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
                   ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Introducing Mark, a devoted dog owner \nwith a deep passion for his four-legged \ncompanions.',
-                        style: TextStyle(
-                            fontSize: 14, overflow: TextOverflow.ellipsis),
-                        maxLines: 3,
-                      ),
-                    ],
-                  ),
-                ),
+                )
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 100,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Icon(Icons.photo_camera),
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          ConstantColors.primary),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
+              children: [CameraButton()],
             )
           ]),
         ),
-        //Container(height: 10),
         Container(
             color: ConstantColors.gray,
             height: 2,
-            margin: EdgeInsets.symmetric(horizontal: 5)),
+            margin: EdgeInsets.symmetric(horizontal: 5)), //Space Container
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageInProfile(image: "assets/images/persa.jpg"),
-                  ImageInProfile(image: "assets/images/pastorAlemao2.jpg"),
-                  ImageInProfile(image: "assets/images/pastorAlemao3.jpg"),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageInProfile(image: "assets/images/pastorAlemao4.jpg"),
-                  ImageInProfile(image: "assets/images/jack.jpg"),
-                  ImageInProfile(image: "assets/images/jack2.jpg"),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageInProfile(image: "assets/images/dogpark.jpg"),
-                  ImageInProfile(image: "assets/images/dogEat.jpg"),
-                  ImageInProfile(image: "assets/images/dogLeash.jpg"),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageInProfile(image: "assets/images/puppy2.jpg"),
-                  ImageInProfile(image: "assets/images/puppy.jpg"),
-                  Expanded(
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(width: 1, color: ConstantColors.white),
-                        color: ConstantColors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
+          constraints: BoxConstraints.expand(height: 460),
+          child: SingleChildScrollView(
+            child: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(2),
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 0,
+              crossAxisCount: 3,
+              shrinkWrap: true,
+              children: [
+                ImageInProfile(image: "assets/images/persa.jpg"),
+                ImageInProfile(image: "assets/images/pastorAlemao2.jpg"),
+                ImageInProfile(image: "assets/images/pastorAlemao3.jpg"),
+                ImageInProfile(image: "assets/images/pastorAlemao4.jpg"),
+                ImageInProfile(image: "assets/images/jack.jpg"),
+                ImageInProfile(image: "assets/images/jack2.jpg"),
+                ImageInProfile(image: "assets/images/dogpark.jpg"),
+                ImageInProfile(image: "assets/images/dogEat.jpg"),
+                ImageInProfile(image: "assets/images/saoBernardo.jpg"),
+                ImageInProfile(image: "assets/images/dogLeash.jpg"),
+                ImageInProfile(image: "assets/images/puppy.jpg"),
+                ImageInProfile(image: "assets/images/puppy2.jpg"),
+                ImageInProfile(image: "assets/images/pastorAlemao.jpg"),
+                // Other images...
+              ],
+            ),
           ),
         )
       ],
