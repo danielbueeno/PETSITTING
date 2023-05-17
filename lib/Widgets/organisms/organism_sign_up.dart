@@ -29,6 +29,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                margin: EdgeInsetsDirectional.symmetric(vertical: 5),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(50),
@@ -38,7 +39,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
                 child: Container(
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(),
-                  height: 100,
+                  height: 107,
                   width: 100,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +55,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
                       ),
                       Container(
                         width: 100,
-                        height: 37,
+                        height: 45,
                         decoration: const BoxDecoration(
                           color: ConstantColors.primary,
                           borderRadius: BorderRadius.only(

@@ -25,6 +25,7 @@ class _TemplatePlatformState extends State<TemplatePlatform> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: _appBar,
       body: SafeArea(
         child: body[_currentIndex],

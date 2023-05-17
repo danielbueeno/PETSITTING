@@ -34,8 +34,9 @@ class _OrganismProfileState extends State<OrganismProfile> {
               Container(
                 margin: EdgeInsets.only(right: 15, top: 15),
                 child: GestureDetector(
-                    onTap: () =>
-                        Navigator.pushNamed(context, ConstantRoutes.signUp),
+                    onTap: () => Navigator.pushNamed(
+                        context, ConstantRoutes.signUp,
+                        arguments: "change"),
                     child: Icon(
                       Icons.tune,
                       color: ConstantColors.primary,
@@ -74,7 +75,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
             height: 2,
             margin: EdgeInsets.symmetric(horizontal: 5)), //Space Container
         Container(
-          constraints: BoxConstraints.expand(height: 460),
+          constraints: BoxConstraints.expand(height: 419),
           child: SingleChildScrollView(
             child: GridView.count(
               primary: false,
