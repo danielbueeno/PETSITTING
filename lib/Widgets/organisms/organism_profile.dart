@@ -8,6 +8,7 @@ import 'package:pet_sitting_project/Widgets/molecules/molecule_avatar.dart';
 import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_store_item.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_message_block.dart';
+import 'package:blur/blur.dart';
 
 class OrganismProfile extends StatefulWidget {
   const OrganismProfile({super.key});
@@ -20,11 +21,13 @@ class _OrganismProfileState extends State<OrganismProfile> {
   final _space = const SizedBox(
     height: 30,
   );
+
   @override
   Widget build(BuildContext context) {
-    const space = SizedBox(
-      height: 10,
-    );
+    double _zoomBlur = 0;
+    double _zoomOpa = 0;
+    Widget _ZoomImg;
+
     return Column(
       children: [
         Container(
@@ -70,12 +73,12 @@ class _OrganismProfileState extends State<OrganismProfile> {
             )
           ]),
         ),
+
         Container(
             color: ConstantColors.gray,
             height: 2,
             margin: EdgeInsets.symmetric(horizontal: 5)), //Space Container
-        Container(
-          constraints: BoxConstraints.expand(height: 419),
+        Expanded(
           child: SingleChildScrollView(
             child: GridView.count(
               primary: false,
@@ -85,7 +88,13 @@ class _OrganismProfileState extends State<OrganismProfile> {
               crossAxisCount: 3,
               shrinkWrap: true,
               children: [
-                ImageInProfile(image: "assets/images/persa.jpg"),
+                GestureDetector(
+                    onLongPress: () {
+                      //_ZoomImg = ImageInProfile(image: "assets/images/persa.jpg");
+                      _zoomBlur = 5;
+                      _zoomOpa = 0.2;
+                    },
+                    child: ImageInProfile(image: "assets/images/persa.jpg")),
                 ImageInProfile(image: "assets/images/pastorAlemao2.jpg"),
                 ImageInProfile(image: "assets/images/pastorAlemao3.jpg"),
                 ImageInProfile(image: "assets/images/pastorAlemao4.jpg"),
