@@ -11,6 +11,7 @@ class Button extends StatelessWidget {
     this.height,
     this.textColor,
     this.fontSize,
+    this.borderColor,
     this.borderCircular= true,
   });
 
@@ -19,6 +20,7 @@ class Button extends StatelessWidget {
   final Function()? onTap;
   final Color? color;
   final Color? textColor;
+  final Color? borderColor;
   final double? fontSize;
   final double? width;
   final double? height;
@@ -32,6 +34,7 @@ class Button extends StatelessWidget {
         height: height ?? 54,
         decoration: BoxDecoration(
           color: color ?? ConstantColors.primary,
+          border:borderColor!=null? Border.all(color: borderColor!):null,
           borderRadius: borderCircular? const BorderRadius.all(Radius.circular(5)): const BorderRadius.all(Radius.zero),
           boxShadow: const [
             BoxShadow(

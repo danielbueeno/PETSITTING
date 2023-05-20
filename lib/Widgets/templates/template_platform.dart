@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/Widgets/organisms/organism_profile.dart';
 import 'package:pet_sitting_project/constants/constants_colors.dart';
 import 'package:pet_sitting_project/widgets/pages/page_home.dart';
-import 'package:pet_sitting_project/widgets/pages/page_messages.dart';
+import 'package:pet_sitting_project/widgets/pages/page_pet_sitters.dart';
 import 'package:pet_sitting_project/widgets/pages/page_store.dart';
 
 class TemplatePlatform extends StatefulWidget {
-  const TemplatePlatform({super.key, required this.body});
+  const TemplatePlatform({super.key, this.index, });
 
-  final Widget body;
-
+  final int? index;
   @override
   State<TemplatePlatform> createState() => _TemplatePlatformState();
 }
@@ -18,14 +17,19 @@ class _TemplatePlatformState extends State<TemplatePlatform> {
   int _currentIndex = 0;
   List<Widget> body = const [
     PageHome(),
-    PageMessages(),
+    PagePetSitters(),
     PageStore(),
     OrganismProfile(),
   ];
+
+  @override
+  void initState() {
+    _currentIndex = widget.index ?? 0;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar,
       body: SafeArea(
         child: body[_currentIndex],
       ),
@@ -51,8 +55,8 @@ class _TemplatePlatformState extends State<TemplatePlatform> {
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: "Message",
+              icon: Icon(Icons.search),
+              label: "Discover",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag),
@@ -68,16 +72,4 @@ class _TemplatePlatformState extends State<TemplatePlatform> {
     );
   }
 
-  AppBar? get _appBar {
-    return _currentIndex == 1
-        ? AppBar(
-            title: const Text(
-              "Messages",
-            ),
-            centerTitle: true,
-            backgroundColor: ConstantColors.primary,
-            automaticallyImplyLeading: false,
-          )
-        : null;
-  }
 }

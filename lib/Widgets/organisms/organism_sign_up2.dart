@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/Constants/constant_routes.dart';
-import 'package:pet_sitting_project/Constants/constants_colors.dart';
+import 'package:pet_sitting_project/constants/constants_colors.dart';
 import 'package:pet_sitting_project/widgets/atoms/button.dart';
 import 'package:pet_sitting_project/widgets/atoms/input.dart';
 
@@ -12,108 +12,145 @@ class OrganismSignUp2 extends StatefulWidget {
 }
 
 class _OrganismSignUp2State extends State<OrganismSignUp2> {
-  final _space = const SizedBox(
-    height: 30,
-  );
+  String? _selectedRole;
+
   @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 26),
-        child: Column(
+   Widget build(BuildContext context) {
+    return  Expanded(
+      child: ListView(children:[
+        Container(
+        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+        child: Wrap(
+          runSpacing: 20,
+          alignment: WrapAlignment.center,
           children: [
-            _space,
-            Container(),
-            _space,
-            _inputs,
-            const SizedBox(
-              height: 10,
-            ),
-            _logInButton,
+            _form,
           ],
-        ));
+         ),
+        )
+      ]),
+    );
   }
 
-  void _handleInputValueChanged(String value) {
-    // Do something with the input value
-  }
-  bool _disability = false;
-  Widget get _inputs {
-    int? _age;
-    String? _gender;
+  //Widgets 
+    Widget get _form{
     return Wrap(
-      runSpacing: 15,
-      children: [
-        Input(
-          onValueChanged: _handleInputValueChanged,
-          hintText: 'Name',
-          keyboardType: TextInputType.name,
-        ),
-        Input(
-          onValueChanged: _handleInputValueChanged,
-          hintText: 'Specie',
-          keyboardType: TextInputType.name,
-        ),
-        Row(
+          runSpacing: 10,
           children: [
-            Expanded(
-              child: Input(
-                onValueChanged: _handleInputValueChanged,
-                hintText: 'Age',
-                keyboardType: TextInputType.number,
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Input(
-                onValueChanged: _handleInputValueChanged,
-                hintText: 'Gender',
-                keyboardType: TextInputType.text,
-              ),
-            ),
+            _nameAndSpecie,
+            _petInfo,
+            _questionSection,
+            _additionalInfo,
+            _nextButton,
+
           ],
-        ),
-        const Text('*Disabilities or special conditions'),
-        RadioListTile(
-          dense: true,
-          title: const Text('Yes'),
-          value: true,
-          groupValue: _disability,
-          onChanged: (value) {
-            setState(() {
-              _disability = value as bool;
-            });
-          },
-        ),
-        RadioListTile(
-          dense: true,
-          title: const Text('No'),
-          value: false,
-          groupValue: _disability,
-          onChanged: (value) {
-            setState(() {
-              _disability = value as bool;
-            });
-          },
-        ),
-        const Text('*If yes, please describe it'),
-        Input(
-          onValueChanged: _handleInputValueChanged,
-          keyboardType: TextInputType.name,
-        ),
-        const Text('More relevant information'),
-        Input(
-          onValueChanged: _handleInputValueChanged,
-          keyboardType: TextInputType.name,
-        ),
+    );
+  }
+
+  Widget get _nameAndSpecie{
+      return Wrap(
+              runSpacing: 10,
+              children: [
+                Input(
+                  onValueChanged:(s){},
+                  hintText: 'Name',
+                  keyboardType: TextInputType.name,
+                ),
+                Input(
+                  onValueChanged: (s){},
+                  hintText: 'Specie',
+                  keyboardType: TextInputType.visiblePassword,
+                ),
+              ],
+        );
+  }
+  Widget get _petInfo{
+    return Column(
+      children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Input(
+                    onValueChanged:(s){},
+                    hintText: 'Age',
+                    keyboardType: TextInputType.name,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Input(
+                    onValueChanged:(s){},
+                    hintText: 'Gender',
+                    keyboardType: TextInputType.name,
+                  ),
+                ),
+              ],
+            ),
       ],
     );
   }
 
-  Widget get _logInButton {
+  Widget get _questionSection{
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Disabilities or special conditions?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+         RadioListTile(
+              title: const Text('Pet Owner'),
+              activeColor: ConstantColors.primary,
+              value: 'pet_owner',
+              groupValue: _selectedRole,
+              contentPadding: const EdgeInsets.all(0),
+              visualDensity: VisualDensity(horizontal: 0),
+             
+              onChanged: (value) {
+                setState(() {
+                  _selectedRole = value.toString();
+                });
+              },
+            ),
+            RadioListTile(
+              title: const Text('Pet Sitter'),
+              activeColor: ConstantColors.primary,
+              value: 'pet_sitter',
+              groupValue: _selectedRole,
+              contentPadding:const EdgeInsets.all(0),
+              onChanged: (value) {
+                setState(() {
+                  _selectedRole = value.toString();
+                });
+              },
+            ),
+      ],
+    );
+  }
+
+    Widget get _additionalInfo{
+      return Wrap(
+              runSpacing: 10,
+              children: [
+                const Text('If yes, please describe it:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Input(
+                  onValueChanged:(s){},
+                  hintText: '',
+                  keyboardType: TextInputType.name,
+                ),
+                const Text('More relevant information', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Input(
+                  onValueChanged: (s){},
+                  hintText: '',
+                  keyboardType: TextInputType.visiblePassword,
+                ),
+              ],
+        );
+  }
+  
+  Widget get _nextButton {
     return Container(
       alignment: Alignment.bottomRight,
       child: Button(
-        label: 'Confirm',
+        label: 'Next',
         width: 80,
         height: 40,
         fontSize: 16,
@@ -123,4 +160,5 @@ class _OrganismSignUp2State extends State<OrganismSignUp2> {
       ),
     );
   }
+
 }

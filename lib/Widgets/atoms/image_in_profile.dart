@@ -12,8 +12,8 @@ class ImageInProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: 100,
-        width: 100,
+        height: 129,
+        width: 129,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: ConstantColors.white),
           image: DecorationImage(

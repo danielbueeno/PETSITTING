@@ -9,7 +9,7 @@ class PageStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TemplateSearchPages(
       body: OrganismStore(),
-      hasShuffle: false,
+     hasIcon: false,
     );
   }
 }
