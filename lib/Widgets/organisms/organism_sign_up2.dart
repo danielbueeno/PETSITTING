@@ -15,137 +15,145 @@ class _OrganismSignUp2State extends State<OrganismSignUp2> {
   String? _selectedRole;
 
   @override
-   Widget build(BuildContext context) {
-    return  Expanded(
-      child: ListView(children:[
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView(children: [
         Container(
-        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
-        child: Wrap(
-          runSpacing: 20,
-          alignment: WrapAlignment.center,
-          children: [
-            _form,
-          ],
-         ),
+          margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+          child: Wrap(
+            runSpacing: 20,
+            alignment: WrapAlignment.center,
+            children: [
+              _form,
+            ],
+          ),
         )
       ]),
     );
   }
 
-  //Widgets 
-    Widget get _form{
+  //Widgets
+  Widget get _form {
     return Wrap(
-          runSpacing: 10,
-          children: [
-            _nameAndSpecie,
-            _petInfo,
-            _questionSection,
-            _additionalInfo,
-            _nextButton,
-
-          ],
-    );
-  }
-
-  Widget get _nameAndSpecie{
-      return Wrap(
-              runSpacing: 10,
-              children: [
-                Input(
-                  onValueChanged:(s){},
-                  hintText: 'Name',
-                  keyboardType: TextInputType.name,
-                ),
-                Input(
-                  onValueChanged: (s){},
-                  hintText: 'Specie',
-                  keyboardType: TextInputType.visiblePassword,
-                ),
-              ],
-        );
-  }
-  Widget get _petInfo{
-    return Column(
+      runSpacing: 10,
       children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Input(
-                    onValueChanged:(s){},
-                    hintText: 'Age',
-                    keyboardType: TextInputType.name,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Input(
-                    onValueChanged:(s){},
-                    hintText: 'Gender',
-                    keyboardType: TextInputType.name,
-                  ),
-                ),
-              ],
-            ),
+        _nameAndSpecie,
+        _petInfo,
+        _questionSection,
+        _additionalInfo,
+        _nextButton,
       ],
     );
   }
 
-  Widget get _questionSection{
+  Widget get _nameAndSpecie {
+    return Wrap(
+      runSpacing: 10,
+      children: [
+        Input(
+          onValueChanged: (s) {},
+          hintText: 'Name',
+          keyboardType: TextInputType.name,
+        ),
+        Input(
+          onValueChanged: (s) {},
+          hintText: 'Specie',
+          keyboardType: TextInputType.visiblePassword,
+        ),
+      ],
+    );
+  }
+
+  Widget get _petInfo {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Input(
+                onValueChanged: (s) {},
+                hintText: 'Age',
+                keyboardType: TextInputType.name,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Input(
+                onValueChanged: (s) {},
+                hintText: 'Gender',
+                keyboardType: TextInputType.name,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget get _questionSection {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Disabilities or special conditions?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-         RadioListTile(
-              title: const Text('Pet Owner'),
-              activeColor: ConstantColors.primary,
-              value: 'pet_owner',
-              groupValue: _selectedRole,
-              contentPadding: const EdgeInsets.all(0),
-              visualDensity: VisualDensity(horizontal: 0),
-             
-              onChanged: (value) {
-                setState(() {
-                  _selectedRole = value.toString();
-                });
-              },
-            ),
-            RadioListTile(
-              title: const Text('Pet Sitter'),
-              activeColor: ConstantColors.primary,
-              value: 'pet_sitter',
-              groupValue: _selectedRole,
-              contentPadding:const EdgeInsets.all(0),
-              onChanged: (value) {
-                setState(() {
-                  _selectedRole = value.toString();
-                });
-              },
-            ),
+        const Text(
+          'Disabilities or special conditions?',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        RadioListTile(
+          title: const Text('Yes'),
+          activeColor: ConstantColors.primary,
+          value: 'pet_owner',
+          groupValue: _selectedRole,
+          contentPadding: const EdgeInsets.all(0),
+          visualDensity: const VisualDensity(horizontal: 0),
+          onChanged: (value) {
+            setState(() {
+              _selectedRole = value.toString();
+            });
+          },
+        ),
+        RadioListTile(
+          title: const Text('No'),
+          activeColor: ConstantColors.primary,
+          value: 'pet_sitter',
+          groupValue: _selectedRole,
+          contentPadding: const EdgeInsets.all(0),
+          onChanged: (value) {
+            setState(() {
+              _selectedRole = value.toString();
+            });
+          },
+        ),
       ],
     );
   }
 
-    Widget get _additionalInfo{
-      return Wrap(
-              runSpacing: 10,
-              children: [
-                const Text('If yes, please describe it:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                Input(
-                  onValueChanged:(s){},
-                  hintText: '',
-                  keyboardType: TextInputType.name,
-                ),
-                const Text('More relevant information', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                Input(
-                  onValueChanged: (s){},
-                  hintText: '',
-                  keyboardType: TextInputType.visiblePassword,
-                ),
-              ],
-        );
+  Widget get _additionalInfo {
+    return Wrap(
+      runSpacing: 10,
+      children: [
+        const Text(
+          'If yes, please describe it:',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        Input(
+          onValueChanged: (s) {},
+          hintText: '',
+          keyboardType: TextInputType.name,
+        ),
+        const Text(
+          'More relevant information',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        Input(
+          onValueChanged: (s) {},
+          hintText: '',
+          keyboardType: TextInputType.visiblePassword,
+        ),
+      ],
+    );
   }
-  
+
   Widget get _nextButton {
     return Container(
       alignment: Alignment.bottomRight,
@@ -160,5 +168,4 @@ class _OrganismSignUp2State extends State<OrganismSignUp2> {
       ),
     );
   }
-
 }
