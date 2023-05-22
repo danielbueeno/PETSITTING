@@ -6,12 +6,12 @@ import 'package:pet_sitting_project/Constants/constants_colors.dart';
 import 'package:pet_sitting_project/Widgets/atoms/button.dart';
 import 'package:pet_sitting_project/Widgets/atoms/cameraButton.dart';
 import 'package:pet_sitting_project/Widgets/atoms/image_in_profile.dart';
+import 'package:pet_sitting_project/Widgets/atoms/image_in_profile_zoom.dart';
 import 'package:pet_sitting_project/Widgets/atoms/profileText.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_avatar.dart';
 import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_store_item.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_message_block.dart';
-import 'package:pet_sitting_project/Widgets/atoms/image_in_profile_zoom';
 import 'package:blur/blur.dart';
 
 class OrganismProfile extends StatefulWidget {
@@ -192,12 +192,4 @@ class _OrganismProfileState extends State<OrganismProfile> {
           ),
         )
       : Container(child: chi);
-
-  /* Widget _buildImages({required String image}) {
-    return GestureDetector(
-      onLongPressStart: (LongPressStartDetails details) =>
-          _onZoom(ImageZoom(img: image)),
-      child: ImageInProfile(image: image),
-    );
-  } */
 }

@@ -14,18 +14,24 @@ class ImageZoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 180, horizontal: 10),
       child: Container(
-        height: 200,
-        width: 100,
+        margin: EdgeInsets.symmetric(vertical: 15),
+        padding: EdgeInsets.symmetric(vertical: 50),
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: ConstantColors.white),
+          color: Color.fromRGBO(43, 43, 42, 0.7),
+          border: Border.symmetric(
+            vertical:
+                BorderSide(width: 15, color: Color.fromRGBO(43, 43, 42, 0.8)),
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(
-            image: AssetImage("assets/images/pastorAlemao.jpg"),
-            fit: BoxFit.cover,
+            image: AssetImage(img),
+            fit: BoxFit.fitWidth,
           ),
         ),
       ),
-    ).frosted(borderRadius: BorderRadius.all(Radius.circular(5)));
+    );
   }
 }
