@@ -100,31 +100,9 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
 
   Widget get _settings {
     return GestureDetector(
-      onTap: () {
-        showModalBottomSheet<void>(
-            context: context,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50), topRight: Radius.circular(50)),
-            ),
-            builder: (BuildContext context) {
-              return Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Wrap(
-                  direction: Axis.vertical,
-                  runAlignment: WrapAlignment.center,
-                  runSpacing: 10,
-                  spacing: 10,
-                  children: [
-                    _settingsButton,
-                    _signOutButton,
-                  ],
-                ),
-              );
-            });
-      },
+      onTap: () => Navigator.pushNamed(context, ConstantRoutes.message),
       child: const Icon(
-        Icons.tune,
+        Icons.message,
         color: ConstantColors.primary,
         size: 30,
       ),
