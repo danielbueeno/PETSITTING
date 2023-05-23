@@ -16,7 +16,7 @@ class TemplateAuthentication extends StatelessWidget {
         centerTitle: true,
         backgroundColor: ConstantColors.primary,
       ),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: body,
       ),
     );

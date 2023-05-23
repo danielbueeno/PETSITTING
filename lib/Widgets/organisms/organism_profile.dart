@@ -35,50 +35,6 @@ class _OrganismProfileState extends State<OrganismProfile> {
       chi: Column(
         children: [
           _infoSection,
-          /* Container(
-            margin: EdgeInsets.symmetric(horizontal: 15),
-            child: Column(children: [
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Container(
-                  margin: EdgeInsets.only(right: 15, top: 15),
-                  child: GestureDetector(
-                      onLongPress: () => Navigator.pushNamed(
-                          context, ConstantRoutes.signUp,
-                          arguments: "change"),
-                      child: Icon(
-                        Icons.tune,
-                        color: ConstantColors.primary,
-                        size: 30,
-                      )),
-                ),
-              ]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MoleculeAvatar(
-                      name: "Mark Hunt",
-                      followers: "876",
-                      img: "assets/images/luis.jpeg"),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      profileText(
-                        text:
-                            "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [CameraButton()],
-              )
-            ]),
-          ), */
-
           _divider, //Space Container
           _gallery,
         ],
@@ -286,7 +242,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
   Widget get _settingsButton {
     return Button(
       label: "Settings",
-      onTap: () {}, //=> Navigator.pushNamed(context, ConstantRoutes.signUp),
+      onTap: () => Navigator.pushNamed(context, ConstantRoutes.signUp),
       width: 250,
     );
   }

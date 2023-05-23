@@ -96,12 +96,15 @@ class _MoleculeHomePostState extends State<MoleculeHomePost> {
   }
 
   Widget get _post {
-    return Container(
-      width: double.infinity,
-      height: 275,
-      decoration: BoxDecoration(
-        color: ConstantColors.gray,
-        image: DecorationImage(image: AssetImage(widget.postImage)),
+    return GestureDetector(
+      onDoubleTap: _onClickLike,
+      child: Container(
+        width: double.infinity,
+        height: 275,
+        decoration: BoxDecoration(
+          color: ConstantColors.gray,
+          image: DecorationImage(image: AssetImage(widget.postImage)),
+        ),
       ),
     );
   }
