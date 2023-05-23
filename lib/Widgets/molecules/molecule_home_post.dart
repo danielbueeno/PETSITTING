@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/constants/constants_colors.dart';
 
@@ -23,6 +25,7 @@ class MoleculeHomePost extends StatefulWidget {
 class _MoleculeHomePostState extends State<MoleculeHomePost> {
   bool _likedPost = false;
   int _likes = 0;
+  bool _showIcon = false;
 
   @override
   void initState() {
@@ -105,6 +108,14 @@ class _MoleculeHomePostState extends State<MoleculeHomePost> {
           color: ConstantColors.gray,
           image: DecorationImage(image: AssetImage(widget.postImage)),
         ),
+        child: _showIcon
+            ? const Icon(
+                Icons.favorite,
+                color: Colors.white,
+                size: 100,
+                fill: 0.1,
+              )
+            : const SizedBox(),
       ),
     );
   }
@@ -128,11 +139,18 @@ class _MoleculeHomePostState extends State<MoleculeHomePost> {
   _onClickLike() {
     setState(() {
       _likedPost = !_likedPost;
+      _likedPost ? _showIcon = true : _showIcon = false;
       if (_likedPost) {
         _likes++;
       } else {
         _likes--;
       }
+    });
+
+    Timer(const Duration(milliseconds: 500), () {
+      setState(() {
+        _showIcon = false;
+      });
     });
   }
 }

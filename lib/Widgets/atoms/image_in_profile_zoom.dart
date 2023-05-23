@@ -21,10 +21,10 @@ class ImageZoom extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 50),
         decoration: BoxDecoration(
           color: Color.fromRGBO(43, 43, 42, 0.7),
-          border: Border.symmetric(
+          /* border: Border.symmetric(
             vertical:
                 BorderSide(width: 15, color: Color.fromRGBO(43, 43, 42, 0.7)),
-          ),
+          ), */
           borderRadius: BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(
             image: AssetImage(img),
