@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_sitting_project/Widgets/pages/page_petsitter_profile.dart';
 import 'package:pet_sitting_project/widgets/pages/page_profile.dart';
 import 'package:pet_sitting_project/Widgets/pages/page_sign_up2.dart';
 import 'package:pet_sitting_project/constants/constant_routes.dart';
@@ -30,6 +31,8 @@ class App extends StatelessWidget {
         ConstantRoutes.message: (context) => const PageMessage(),
         ConstantRoutes.signUp2: (context) => const PageSignUp2(),
         ConstantRoutes.profile: (context) => const PageProfile(),
+        ConstantRoutes.petSitterProfile: (context) =>
+            const PagePetSitterProfile(),
         ConstantRoutes.messages: (context) => const PageMessages(),
         ConstantRoutes.petSitters: (context) => const TemplatePlatform(
               index: 1,

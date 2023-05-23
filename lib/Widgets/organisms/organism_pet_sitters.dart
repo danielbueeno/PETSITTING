@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_sitting_project/Constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_pet_sitter_block.dart';
 
 class OrganismPetSitter extends StatelessWidget {
@@ -7,17 +8,21 @@ class OrganismPetSitter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: _petSitterList(),
+      children: _petSitterList(context),
     );
   }
 
-  _petSitterList() {
+  _petSitterList(BuildContext context) {
     return [
-      const MoleculePetSitterBlock(
-        name: "Leonardo Freitas",
-        age: "20",
-        likes: "37",
-        image: "assets/images/leonardo.jpeg",
+      GestureDetector(
+        onTap: () =>
+            Navigator.pushNamed(context, ConstantRoutes.petSitterProfile),
+        child: const MoleculePetSitterBlock(
+          name: "Leonardo Freitas",
+          age: "20",
+          likes: "37",
+          image: "assets/images/leonardo.jpeg",
+        ),
       ),
       const MoleculePetSitterBlock(
         name: "André Silva",

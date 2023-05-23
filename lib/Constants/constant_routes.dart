@@ -8,4 +8,5 @@ class ConstantRoutes {
   static const profile = '/profile';
   static const messages = '/messages';
   static const petSitters = '/petSitters';
+  static const petSitterProfile = '/petSitterProfile';
 }
