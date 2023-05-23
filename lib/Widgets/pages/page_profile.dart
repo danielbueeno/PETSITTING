@@ -9,7 +9,7 @@ class PageProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return TemplateSearchPages(
       body: OrganismProfile(),
-      hasShuffle: false,
+      hasIcon: false,
     );
   }
 }

@@ -23,7 +23,7 @@ class ImageZoom extends StatelessWidget {
           color: Color.fromRGBO(43, 43, 42, 0.7),
           border: Border.symmetric(
             vertical:
-                BorderSide(width: 15, color: Color.fromRGBO(43, 43, 42, 0.8)),
+                BorderSide(width: 15, color: Color.fromRGBO(43, 43, 42, 0.7)),
           ),
           borderRadius: BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(

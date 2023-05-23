@@ -6,4 +6,6 @@ class ConstantRoutes {
   static const logged = '/logged';
   static const message = '/message';
   static const profile = '/profile';
+  static const messages = '/messages';
+  static const petSitters = '/petSitters';
 }

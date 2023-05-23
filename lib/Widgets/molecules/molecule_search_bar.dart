@@ -4,11 +4,11 @@ import 'package:pet_sitting_project/Widgets/atoms/input.dart';
 
 class MoleculeSearchBar extends StatefulWidget {
   const MoleculeSearchBar(
-      {super.key, required this.hasShuffle, this.onShuffle});
+      {super.key, required this.hasIcon, this.onIconClick});
 
-  final Function()? onShuffle;
+  final Function()? onIconClick;
 
-  final bool hasShuffle;
+  final bool hasIcon;
 
   @override
   State<MoleculeSearchBar> createState() => _MoleculeSearchBarState();
@@ -26,17 +26,17 @@ class _MoleculeSearchBarState extends State<MoleculeSearchBar> {
         children: [
           Input(
             onValueChanged: (v) {},
-            suffixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.search, color: ConstantColors.secondary,),
             textAlignVertical: TextAlignVertical.top,
             width: MediaQuery.of(context).size.width - 60,
           ),
-          widget.hasShuffle
+          widget.hasIcon
               ? GestureDetector(
-                  onTap: widget.onShuffle,
-                  child: Icon(
-                    Icons.shuffle,
+                  onTap: widget.onIconClick,
+                  child: const Icon(
+                    Icons.message,
                     size: 30,
-                    color: ConstantColors.primary,
+                    color: ConstantColors.white,
                   ),
                 )
               : const SizedBox()

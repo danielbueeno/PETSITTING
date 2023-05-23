@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/constants/constants_colors.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_message_block.dart';
 
@@ -18,12 +19,15 @@ class _OrganismMessagesState extends State<OrganismMessages> {
         const SizedBox(
           height: 20,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const  [
-            Icon(Icons.add, color: ConstantColors.primary,),
-            Text('Find more sitters', style: TextStyle(color: ConstantColors.primary, fontWeight: FontWeight.bold),),
-          ],
+        GestureDetector(
+          onTap: ()=>Navigator.pushNamed(context, ConstantRoutes.petSitters),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const  [
+              Icon(Icons.add, color: ConstantColors.primary,),
+              Text('Find more sitters', style: TextStyle(color: ConstantColors.primary, fontWeight: FontWeight.bold),),
+            ],
+          ),
         ),
       ],
     );

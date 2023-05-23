@@ -13,140 +13,131 @@ class OrganismSignUp extends StatefulWidget {
 }
 
 class _OrganismSignUpState extends State<OrganismSignUp> {
-  final _space = const SizedBox(
-    height: 30,
-  );
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 600,
-      constraints: BoxConstraints.tight(Size(340, 600)),
-      margin: const EdgeInsets.symmetric(horizontal: 26),
-      child: Column(
-        children: [
-          _space,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsetsDirectional.symmetric(vertical: 5),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(50),
-                  ),
-                  border: Border.all(color: ConstantColors.gray, width: 1),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(),
-                  height: 107,
-                  width: 100,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        child: const Icon(
-                          Icons.person,
-                          size: 60,
-                          color: ConstantColors.gray,
-                        ),
-                      ),
-                      Container(
-                        width: 100,
-                        height: 45,
-                        decoration: const BoxDecoration(
-                          color: ConstantColors.primary,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(80),
-                            bottomRight: Radius.circular(80),
-                          ),
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            print("hello");
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: const Text(
-                              'Select',
-                              style: TextStyle(
-                                color: ConstantColors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          _space,
-          _inputs,
-          const SizedBox(
-            height: 10,
-          ),
-          _logInButton,
-        ],
-      ),
-    );
-  }
-
-  void _handleInputValueChanged(String value) {
-    // Do something with the input value
-  }
   DateTime? _selectedDate;
   final DateFormat formatter = DateFormat('yyyy-MM-dd');
   String? _selectedRole;
-  Widget get _inputs {
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView(children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+          child: Wrap(
+            runSpacing: 20,
+            alignment: WrapAlignment.center,
+            children: [
+              _profileImage,
+              _form,
+            ],
+          ),
+        )
+      ]),
+    );
+  }
+
+  //Widgets
+  Widget get _profileImage {
+    return Stack(children: [
+      Container(
+        width: 110,
+        height: 105,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
+            border: Border.all(width: 1, color: ConstantColors.gray)),
+      ),
+      Container(
+        margin: const EdgeInsets.only(top: 60),
+        alignment: Alignment.center,
+        width: 110,
+        height: 50,
+        decoration: BoxDecoration(
+            color: ConstantColors.primary,
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(80),
+              bottomRight: Radius.circular(80),
+            ),
+            border: Border.all(color: ConstantColors.gray, width: 1)),
+        child: const Text(
+          "Select",
+          style: TextStyle(
+              color: ConstantColors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18),
+        ),
+      ),
+      Container(
+          margin: const EdgeInsets.only(left: 28, top: 10),
+          child: const Icon(
+            Icons.person,
+            size: 55,
+          ))
+    ]);
+  }
+
+  Widget get _form {
+    return Wrap(
+      runSpacing: 10,
+      children: [
+        _userAndPass,
+        _personalInfo,
+        _questionSection,
+        _nextButton,
+      ],
+    );
+  }
+
+  Widget get _userAndPass {
+    return Wrap(
+      runSpacing: 10,
+      children: [
+        Input(
+          onValueChanged: (s) {},
+          hintText: 'Username',
+          keyboardType: TextInputType.name,
+        ),
+        Input(
+          onValueChanged: (s) {},
+          hintText: 'Password',
+          keyboardType: TextInputType.visiblePassword,
+        ),
+      ],
+    );
+  }
+
+  Widget get _personalInfo {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: Input(
-                onValueChanged: _handleInputValueChanged,
+                onValueChanged: (s) {},
                 hintText: 'First Name',
                 keyboardType: TextInputType.name,
+                width: double.infinity / 3,
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(
+              width: 10,
+            ),
             Expanded(
               child: Input(
-                onValueChanged: _handleInputValueChanged,
+                onValueChanged: (s) {},
                 hintText: 'Last Name',
                 keyboardType: TextInputType.name,
+                width: double.infinity / 4,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: TextFormField(
                 readOnly: true,
-                onTap: () async {
-                  final DateTime? selectedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1900),
-                    lastDate: DateTime.now(),
-                  );
-
-                  if (selectedDate != null) {
-                    setState(() {
-                      _selectedDate = selectedDate;
-                    });
-                  }
-                },
+                onTap: _onTapCalendar,
                 decoration: InputDecoration(
                   hintText: _selectedDate == null
                       ? 'Birth Date'
@@ -158,58 +149,9 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
             const SizedBox(width: 10),
             Expanded(
               child: Input(
-                onValueChanged: _handleInputValueChanged,
+                onValueChanged: (s) {},
                 hintText: 'ID/Passport',
                 keyboardType: TextInputType.name,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 20),
-        const Text('Are you a Pet Owner or Pet Sitter?'),
-        const SizedBox(height: 20),
-        RadioListTile(
-          title: const Text('Pet Owner'),
-          value: 'pet_owner',
-          groupValue: _selectedRole,
-          onChanged: (value) {
-            setState(() {
-              _selectedRole = value.toString();
-            });
-          },
-        ),
-        RadioListTile(
-          title: const Text('Pet Sitter'),
-          value: 'pet_sitter',
-          groupValue: _selectedRole,
-          onChanged: (value) {
-            setState(() {
-              _selectedRole = value.toString();
-            });
-          },
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Input(
-                onValueChanged: _handleInputValueChanged,
-                hintText: 'Username',
-                keyboardType: TextInputType.name,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Input(
-                onValueChanged: _handleInputValueChanged,
-                hintText: 'Password',
-                keyboardType: TextInputType.visiblePassword,
               ),
             ),
           ],
@@ -218,7 +160,44 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
     );
   }
 
-  Widget get _logInButton {
+  Widget get _questionSection {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Are you a Pet Owner or a Pet Sitter?',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        RadioListTile(
+          title: const Text('Pet Owner'),
+          activeColor: ConstantColors.primary,
+          value: 'pet_owner',
+          groupValue: _selectedRole,
+          contentPadding: const EdgeInsets.all(0),
+          visualDensity: VisualDensity(horizontal: 0),
+          onChanged: (value) {
+            setState(() {
+              _selectedRole = value.toString();
+            });
+          },
+        ),
+        RadioListTile(
+          title: const Text('Pet Sitter'),
+          activeColor: ConstantColors.primary,
+          value: 'pet_sitter',
+          groupValue: _selectedRole,
+          contentPadding: const EdgeInsets.all(0),
+          onChanged: (value) {
+            setState(() {
+              _selectedRole = value.toString();
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget get _nextButton {
     return Container(
       alignment: Alignment.bottomRight,
       child: Button(
@@ -227,9 +206,27 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
         height: 40,
         fontSize: 16,
         onTap: () {
-          Navigator.pushNamed(context, ConstantRoutes.signUp2);
+          if (_selectedRole == "pet_owner") {
+            Navigator.pushNamed(context, ConstantRoutes.signUp2);
+          }
         },
       ),
     );
+  }
+
+  //Functions
+  _onTapCalendar() async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+
+    if (selectedDate != null) {
+      setState(() {
+        _selectedDate = selectedDate;
+      });
+    }
   }
 }

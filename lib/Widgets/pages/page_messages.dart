@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_sitting_project/widgets/organisms/organism_messages.dart';
+import 'package:pet_sitting_project/widgets/templates/template_message.dart';
 
 
 class PageMessages extends StatelessWidget {
@@ -7,6 +8,6 @@ class PageMessages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OrganismMessages();
+    return const TemplateMessage(body: OrganismMessages(), title: "Messages",);
   }
 }

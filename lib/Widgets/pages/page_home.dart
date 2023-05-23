@@ -9,7 +9,7 @@ class PageHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TemplateSearchPages(
       body: OrganismHome(),
-      hasShuffle: true,
+      hasIcon: true,
     );
   }
 }

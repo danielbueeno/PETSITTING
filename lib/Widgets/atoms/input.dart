@@ -69,6 +69,8 @@ class Input extends StatelessWidget {
               color: ConstantColors.primary,
             ),
           ),
+          filled: true,
+          fillColor:ConstantColors.white,
         ),
       ),
     );

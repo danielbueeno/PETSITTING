@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:pet_sitting_project/Constants/constants_colors.dart';
+import 'package:pet_sitting_project/constants/constant_routes.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_pet_sitter_block.dart';
 import 'package:pet_sitting_project/widgets/molecules/molecule_search_bar.dart';
 
 class TemplateSearchPages extends StatefulWidget {
-  const TemplateSearchPages({super.key, required this.body, required this.hasShuffle});
+  const TemplateSearchPages({super.key, required this.body, required this.hasIcon});
 
-  final bool hasShuffle;
+  final bool hasIcon;
 
   final Widget body;
   @override
@@ -15,26 +17,25 @@ class TemplateSearchPages extends StatefulWidget {
 
 class _TemplateSearchPagesState extends State<TemplateSearchPages> {
 
-  Widget _content = SizedBox();
-  bool isShufflePage = false;
+  bool hasMessageOption = false;
 
-  @override
-  void initState() {
-    _content = widget.body;
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         children: [
           Expanded(child: ListView(
             children: [
-              MoleculeSearchBar(hasShuffle: widget.hasShuffle, onShuffle: _shuffleFunction,),
+              Container(
+                width: double.infinity,
+                color: ConstantColors.primary,
+                child: MoleculeSearchBar(hasIcon: widget.hasIcon, onIconClick: _messages,),
+              ),
               const SizedBox(height: 20,),
-             _content,
+             widget.body,
             ],
           )),
          
@@ -43,28 +44,8 @@ class _TemplateSearchPagesState extends State<TemplateSearchPages> {
     );
   }
 
-  _shuffleFunction(){
-    setState(() {
-      if(widget.hasShuffle && !isShufflePage){
-        _content = Column(
-          children: _petSitterList(),
-      );
-
-      }
-      if(isShufflePage){
-        _content = widget.body;
-      }
-
-      isShufflePage = !isShufflePage;
-
-    });
-   
+  _messages(){
+    Navigator.pushNamed(context, ConstantRoutes.messages);
   }
-  _petSitterList(){
-    return [
-      const MoleculePetSitterBlock(name: "Leonardo Freitas", age: "22", likes: "30", image: "assets/images/leonardo.jpeg",),
-      const MoleculePetSitterBlock(name: "Leonardo Freitas", age: "22", likes: "30", image: "assets/images/leonardo.jpeg",),
-      const MoleculePetSitterBlock(name: "Leonardo Freitas", age: "22", likes: "30", image: "assets/images/leonardo.jpeg",),
-    ];
-  }
+
 }

@@ -11,7 +11,7 @@ class profileText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 30, top: 30),
+      margin: EdgeInsets.only(top: 30),
       child: SizedBox(
         width: 200, // Set the desired width for the ConstrainedOverflowBox
         height: 100, // Set the desired height for the ConstrainedOverflowBox
@@ -19,7 +19,7 @@ class profileText extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 13,
+              fontSize: 14,
             ),
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
