@@ -113,7 +113,8 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
   }
 
   Widget get _profileData {
-    return const Column(
+    double rating = 4.5;
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -130,10 +131,33 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Text("876 Followers",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
+        Text(
+          "1876 Followers",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Rating: ",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            Text(
+              rating.toString(),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
