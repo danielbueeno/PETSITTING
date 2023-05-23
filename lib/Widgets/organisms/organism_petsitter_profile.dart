@@ -20,7 +20,8 @@ class OrganismPetSitterProfile extends StatefulWidget {
       OrganismPetSitterProfileState();
 }
 
-class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
+class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
+    with SingleTickerProviderStateMixin {
   final _space = const SizedBox(
     height: 30,
   );
@@ -28,14 +29,30 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
   Widget _zoomImg = Container();
   double _zoomOpa = 0;
 
+  final List<String> tabNames = ['Posts', 'Reviews'];
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: tabNames.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return _zoom(
       chi: Column(
         children: [
           _infoSection,
-          _divider, //Space Container
-          _gallery,
+          _camera,
+          //_divider, //Space Container
+          //_gallery,
         ],
       ),
     );
@@ -62,21 +79,24 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
       : Container(child: chi);
 
   Widget get _infoSection {
-    return Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-      Container(margin: EdgeInsets.only(right: 15, top: 15), child: _settings),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          _profileData,
-          profileText(
-            text:
-                "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
+          Container(
+              margin: EdgeInsets.only(right: 15, top: 15), child: _settings),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _profileData,
+              profileText(
+                text:
+                    "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
+              ),
+            ],
           ),
-        ],
-      ),
-      _camera,
-    ]);
+        ]);
   }
 
   Widget get _settings {
@@ -163,17 +183,29 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
   }
 
   Widget get _camera {
-    return GestureDetector(
-      child: Container(
-        margin: const EdgeInsets.only(right: 15),
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        decoration: const BoxDecoration(
-            color: ConstantColors.primary,
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-        child: const Icon(
-          Icons.photo_camera,
-          color: ConstantColors.white,
-        ),
+    return Expanded(
+      child: Column(
+        children: [
+          TabBar(
+            controller: _tabController,
+            tabs: tabNames.map((String name) => Tab(text: name)).toList(),
+            labelColor:
+                Colors.black, // Set the color for selected/active tab text
+            unselectedLabelColor:
+                Colors.grey, // Set the color for unselected/inactive tab text
+            indicatorColor: ConstantColors.primary,
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                // Replace with your tab content widgets
+                Center(child: _gallery),
+                Center(child: _review),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -183,6 +215,65 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile> {
       margin: const EdgeInsets.symmetric(vertical: 5),
       color: ConstantColors.gray,
       height: 2,
+    );
+  }
+
+  Widget get _review {
+    return CustomScrollView(
+      slivers: [
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: Card(
+                  color: Color.fromARGB(255, 235, 235, 235),
+                  elevation: 2,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(
+                          "assets/images/pastorAlemao3.jpg"), // Replace with your avatar image
+                    ),
+                    title: Text(
+                      'John Doe',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 16,
+                            ),
+                            SizedBox(width: 4),
+                            Text('4.5', style: TextStyle(fontSize: 14)),
+                          ],
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () {
+                      // Handle onTap event
+                    },
+                  ),
+                ),
+              );
+            },
+            childCount: 20,
+          ),
+        ),
+      ],
     );
   }
 
