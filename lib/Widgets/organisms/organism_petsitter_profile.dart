@@ -11,6 +11,7 @@ import 'package:pet_sitting_project/widgets/molecules/molecule_store_item.dart';
 import 'package:pet_sitting_project/Widgets/molecules/molecule_message_block.dart';
 import 'package:blur/blur.dart';
 import 'package:pet_sitting_project/widgets/atoms/button.dart';
+import 'dart:math';
 
 class OrganismPetSitterProfile extends StatefulWidget {
   const OrganismPetSitterProfile({super.key});
@@ -51,8 +52,6 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
         children: [
           _infoSection,
           _camera,
-          //_divider, //Space Container
-          //_gallery,
         ],
       ),
     );
@@ -219,11 +218,13 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
   }
 
   Widget get _review {
+    final Random random = Random();
     return CustomScrollView(
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
+              final int rating = random.nextInt(6); // Random rating from 1 to 5
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -252,7 +253,8 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
                               size: 16,
                             ),
                             SizedBox(width: 4),
-                            Text('4.5', style: TextStyle(fontSize: 14)),
+                            Text(rating.toStringAsFixed(1),
+                                style: TextStyle(fontSize: 14)),
                           ],
                         ),
                         SizedBox(height: 4),
