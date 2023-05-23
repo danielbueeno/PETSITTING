@@ -219,12 +219,46 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
 
   Widget get _review {
     final Random random = Random();
+    final List<String> names = [
+      'John Doe',
+      'Jane Smith',
+      'Michael Johnson',
+      'Emily Davis',
+      'David Wilson',
+      'Sarah Thompson',
+      'Robert Martinez',
+      'Jennifer Anderson',
+      'William Taylor',
+      'Jessica Hernandez',
+      'Daniel Lopez',
+      'Karen Clark',
+      'Matthew Lewis',
+      'Laura Walker',
+      'Christopher Green',
+      'Lisa Hill',
+      'Andrew Adams',
+      'Maria Baker',
+      'Joshua Turner',
+      'Michelle Carter',
+    ];
+
+    int currentIndex = 0;
+
+    String getNextName() {
+      if (currentIndex >= names.length) {
+        currentIndex = 0;
+        names.shuffle();
+      }
+      return names[currentIndex++];
+    }
+
     return CustomScrollView(
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
               final int rating = random.nextInt(6); // Random rating from 1 to 5
+              final String name = getNextName();
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -237,7 +271,7 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
                           "assets/images/pastorAlemao3.jpg"), // Replace with your avatar image
                     ),
                     title: Text(
-                      'John Doe',
+                      name,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
