@@ -163,7 +163,7 @@ class _OrganismSignUp2State extends State<OrganismSignUp2> {
         height: 40,
         fontSize: 16,
         onTap: () {
-          Navigator.pushNamed(context, ConstantRoutes.logged);
+          Navigator.pushNamed(context, ConstantRoutes.signIn);
         },
       ),
     );
