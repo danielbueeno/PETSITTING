@@ -14,7 +14,7 @@ class SettingsBloc extends Bloc<SettingsEvent, String> {
   final log = Logger();
   String _name = "Mark Hunt";
 
-  SettingsBloc() : super("") {
+  SettingsBloc() : super("Scott Wilson") {
     on<ChangeName>((event, emit) {
       log.i("Change name");
       _name = event.name; // Update the name with the provided value
