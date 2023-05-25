@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_sitting_project/Constants/constants_colors.dart';
+import 'package:pet_sitting_project/Widgets/atoms/SettingsBloc.dart';
 import 'package:pet_sitting_project/Widgets/atoms/cameraButton.dart';
 import 'package:pet_sitting_project/Widgets/atoms/image_in_profile.dart';
 import 'package:pet_sitting_project/Widgets/atoms/image_in_profile_zoom.dart';
@@ -117,7 +119,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
+      children: [
         CircleAvatar(
           radius: 57,
           backgroundImage: AssetImage("assets/images/homem5.jpg"),
@@ -125,12 +127,13 @@ class _OrganismProfileState extends State<OrganismProfile> {
         SizedBox(
           height: 5,
         ),
-        Text(
-          "Scott Wilson",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        BlocBuilder<SettingsBloc, String>(builder: (context, count) {
+          return Center(
+              child: Text(count,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )));
+        }),
         Text("876 Followers",
             style: TextStyle(
               fontWeight: FontWeight.bold,

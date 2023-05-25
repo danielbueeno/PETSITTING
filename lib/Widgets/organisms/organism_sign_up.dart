@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_sitting_project/Constants/constant_routes.dart';
 import 'package:pet_sitting_project/Constants/constants_colors.dart';
+import 'package:pet_sitting_project/Widgets/atoms/SettingsBloc.dart';
 import 'package:pet_sitting_project/widgets/atoms/button.dart';
 import 'package:pet_sitting_project/widgets/atoms/input.dart';
 import 'package:intl/intl.dart';
@@ -16,6 +18,14 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
   DateTime? _selectedDate;
   final DateFormat formatter = DateFormat('yyyy-MM-dd');
   String? _selectedRole;
+  String? fName;
+  String? lName;
+
+  void _changeName(s) {
+    SettingsBloc bloc = BlocProvider.of<SettingsBloc>(context);
+
+    setState(() => bloc.add(ChangeName(s)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +122,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
           children: [
             Expanded(
               child: Input(
-                onValueChanged: (s) {},
+                onValueChanged: (s) => fName = s,
                 hintText: 'First Name',
                 keyboardType: TextInputType.name,
                 width: double.infinity / 3,
@@ -123,7 +133,9 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
             ),
             Expanded(
               child: Input(
-                onValueChanged: (s) {},
+                onValueChanged: (s) {
+                  lName = s;
+                },
                 hintText: 'Last Name',
                 keyboardType: TextInputType.name,
                 width: double.infinity / 4,
@@ -208,6 +220,7 @@ class _OrganismSignUpState extends State<OrganismSignUp> {
         onTap: () {
           if (_selectedRole == "pet_owner") {
             Navigator.pushNamed(context, ConstantRoutes.signUp2);
+            _changeName('$fName $lName');
           }
         },
       ),

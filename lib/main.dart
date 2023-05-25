@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_sitting_project/Widgets/pages/page_petsitter_profile.dart';
 import 'package:pet_sitting_project/widgets/pages/page_profile.dart';
 import 'package:pet_sitting_project/Widgets/pages/page_sign_up2.dart';
@@ -10,9 +12,13 @@ import 'package:pet_sitting_project/widgets/pages/page_sign_up.dart';
 import 'package:pet_sitting_project/widgets/pages/page_user_logged.dart';
 import 'package:pet_sitting_project/widgets/pages/page_welcome.dart';
 import 'package:pet_sitting_project/widgets/templates/template_platform.dart';
+import 'package:pet_sitting_project/Widgets/atoms/SettingsBloc.dart';
 
 void main() {
-  runApp(const App());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<SettingsBloc>(
+        create: (BuildContext context) => SettingsBloc()),
+  ], child: MaterialApp(home: App())));
 }
 
 class App extends StatelessWidget {
