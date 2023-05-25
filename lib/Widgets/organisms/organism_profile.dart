@@ -72,7 +72,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
           _profileData,
           profileText(
             text:
-                "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
+                "Introducing Scott, a devoted dog owner with a deep passion for his four-legged companions.",
           ),
         ],
       ),
@@ -106,7 +106,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
             });
       },
       child: const Icon(
-        Icons.tune,
+        Icons.edit,
         color: ConstantColors.primary,
         size: 30,
       ),
@@ -120,13 +120,13 @@ class _OrganismProfileState extends State<OrganismProfile> {
       children: const [
         CircleAvatar(
           radius: 57,
-          backgroundImage: AssetImage("assets/images/luis.jpeg"),
+          backgroundImage: AssetImage("assets/images/homem5.jpg"),
         ),
         SizedBox(
           height: 5,
         ),
         Text(
-          "Mark Hunt",
+          "Scott Wilson",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -176,61 +176,56 @@ class _OrganismProfileState extends State<OrganismProfile> {
           children: [
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/persa.jpg"))},
-                child: ImageInProfile(image: "assets/images/persa.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet1.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet1.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    _onZoom(ImageZoom(img: "assets/images/pastorAlemao2.jpg")),
-                child:
-                    ImageInProfile(image: "assets/images/pastorAlemao2.jpg")),
-            GestureDetector(
-                onLongPress: () => {
-                      _onZoom(ImageZoom(img: "assets/images/pastorAlemao3.jpg"))
-                    },
-                child:
-                    ImageInProfile(image: "assets/images/pastorAlemao3.jpg")),
-            GestureDetector(
-                onLongPress: () => {
-                      _onZoom(ImageZoom(img: "assets/images/pastorAlemao4.jpg"))
-                    },
-                child:
-                    ImageInProfile(image: "assets/images/pastorAlemao4.jpg")),
+                    _onZoom(ImageZoom(img: "assets/images/pet2.jpg.jpg")),
+                child: ImageInProfile(image: "assets/images/pet2.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/jack.jpg"))},
-                child: ImageInProfile(image: "assets/images/jack.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet3.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet3.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/jack2.jpg"))},
-                child: ImageInProfile(image: "assets/images/jack2.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet4.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet4.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/dogpark.jpg"))},
-                child: ImageInProfile(image: "assets/images/dogpark.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet5.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet5.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/dogEat.jpg"))},
-                child: ImageInProfile(image: "assets/images/dogEat.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet6.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet6.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/saoBernardo.jpg"))},
-                child: ImageInProfile(image: "assets/images/saoBernardo.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet7.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet7.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/dogLeash.jpg"))},
-                child: ImageInProfile(image: "assets/images/dogLeash.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet8.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet8.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/puppy.jpg"))},
-                child: ImageInProfile(image: "assets/images/puppy.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet9.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet9.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/puppy2.jpg"))},
-                child: ImageInProfile(image: "assets/images/puppy2.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet10.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet10.jpg")),
             GestureDetector(
                 onLongPress: () =>
-                    {_onZoom(ImageZoom(img: "assets/images/pastorAlemao.jpg"))},
-                child: ImageInProfile(image: "assets/images/pastorAlemao.jpg")),
+                    {_onZoom(ImageZoom(img: "assets/images/pet11.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet11.jpg")),
+            GestureDetector(
+                onLongPress: () =>
+                    {_onZoom(ImageZoom(img: "assets/images/pet12.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet12.jpg")),
+            GestureDetector(
+                onLongPress: () =>
+                    {_onZoom(ImageZoom(img: "assets/images/pet13.jpg"))},
+                child: ImageInProfile(image: "assets/images/pet13.jpg")),
 
             // Other images...
           ],
@@ -241,7 +236,7 @@ class _OrganismProfileState extends State<OrganismProfile> {
 
   Widget get _settingsButton {
     return Button(
-      label: "Settings",
+      label: "Edit Profile",
       onTap: () => Navigator.pushNamed(context, ConstantRoutes.signUp),
       width: 250,
     );

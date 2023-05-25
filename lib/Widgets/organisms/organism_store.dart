@@ -40,7 +40,7 @@ class _OrganismStoreState extends State<OrganismStore> {
             title: "Cat food",
             description: "Bag: 5 kg",
             price: "8,99",
-            image: "assets/images/dog-food.png",
+            image: "assets/images/catfood.jpg",
           )),
           space,
           SlidableWidget(
@@ -48,16 +48,9 @@ class _OrganismStoreState extends State<OrganismStore> {
             title: "Dog toy",
             description: "Washable, color: green",
             price: "5,49",
-            image: "assets/images/dog-food.png",
+            image: "assets/images/dogtoy.jpg",
           )),
           space,
-          SlidableWidget(
-              molecule: MoleculeStoreItem(
-            title: "Cat collar",
-            description: "Lupi Linx, unique size",
-            price: "3,99",
-            image: "assets/images/dog-food.png",
-          )),
         ],
       ),
     );

@@ -91,7 +91,7 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
               _profileData,
               profileText(
                 text:
-                    "Introducing Mark, a devoted dog owner with a deep passion for his four-legged companions.",
+                    "Introducing Joshua, a devoted pet sitter with a deep passion for his four-legged companions.",
               ),
             ],
           ),
@@ -117,19 +117,19 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
       children: [
         CircleAvatar(
           radius: 57,
-          backgroundImage: AssetImage("assets/images/luis.jpeg"),
+          backgroundImage: AssetImage("assets/images/homem3.jpg"),
         ),
         SizedBox(
           height: 5,
         ),
         Text(
-          "Mark Hunt",
+          "Joshua Turner",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          "1876 Followers",
+          "3456 Followers",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -203,21 +203,30 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
       'Michael Johnson',
       'Emily Davis',
       'David Wilson',
-      'Sarah Thompson',
-      'Robert Martinez',
-      'Jennifer Anderson',
-      'William Taylor',
-      'Jessica Hernandez',
-      'Daniel Lopez',
-      'Karen Clark',
-      'Matthew Lewis',
-      'Laura Walker',
-      'Christopher Green',
-      'Lisa Hill',
-      'Andrew Adams',
-      'Maria Baker',
-      'Joshua Turner',
-      'Michelle Carter',
+    ];
+
+    final List<String> comments = [
+      'Great pet sitter! Highly recommend.',
+      'Very reliable and professional.',
+      'Took excellent care of my pet. Will book again.',
+      'Friendly and attentive towards animals.',
+      'Fantastic experience. Thank you!',
+    ];
+
+    final List<String> avatarImages = [
+      'assets/images/homem1.jpg',
+      'assets/images/homem2.jpg',
+      'assets/images/mulher2.jpg',
+      'assets/images/mulher3.jpg',
+      'assets/images/mulher1.jpg',
+    ];
+
+    final List<String> commentImages = [
+      'assets/images/comment1.jpg',
+      'assets/images/comment2.jpg',
+      'assets/images/comment3.jpg',
+      'assets/images/comment4.jpg',
+      'assets/images/comment5.jpg',
     ];
 
     int currentIndex = 0;
@@ -230,6 +239,30 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
       return names[currentIndex++];
     }
 
+    String getNextComment() {
+      if (currentIndex >= comments.length) {
+        currentIndex = 0;
+        comments.shuffle();
+      }
+      return comments[currentIndex++];
+    }
+
+    String getNextAvatarImage() {
+      if (currentIndex >= avatarImages.length) {
+        currentIndex = 0;
+        avatarImages.shuffle();
+      }
+      return avatarImages[currentIndex++];
+    }
+
+    String getNextCommentImage() {
+      if (currentIndex >= commentImages.length) {
+        currentIndex = 0;
+        commentImages.shuffle();
+      }
+      return commentImages[currentIndex++];
+    }
+
     return CustomScrollView(
       slivers: [
         SliverList(
@@ -237,6 +270,9 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
             (context, index) {
               final int rating = random.nextInt(6); // Random rating from 1 to 5
               final String name = getNextName();
+              final String comment = getNextComment();
+              final String avatarImage = getNextAvatarImage();
+              final String commentImage = getNextCommentImage();
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -245,8 +281,7 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
                   elevation: 2,
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage(
-                          "assets/images/pastorAlemao3.jpg"), // Replace with your avatar image
+                      backgroundImage: AssetImage(avatarImage),
                     ),
                     title: Text(
                       name,
@@ -271,7 +306,7 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                          comment,
                           style: TextStyle(fontSize: 14),
                         ),
                       ],
@@ -284,7 +319,7 @@ class OrganismPetSitterProfileState extends State<OrganismPetSitterProfile>
                 ),
               );
             },
-            childCount: 20,
+            childCount: 5,
           ),
         ),
       ],

@@ -18,23 +18,23 @@ class OrganismPetSitter extends StatelessWidget {
         onTap: () =>
             Navigator.pushNamed(context, ConstantRoutes.petSitterProfile),
         child: const MoleculePetSitterBlock(
-          name: "Leonardo Freitas",
-          age: "20",
-          likes: "37",
-          image: "assets/images/leonardo.jpeg",
+          name: "Joshua Turner",
+          age: "42",
+          likes: "4.5",
+          image: "assets/images/homem3.jpg",
         ),
       ),
       const MoleculePetSitterBlock(
-        name: "André Silva",
-        age: "35",
-        likes: "12",
-        image: "assets/images/andre.jpeg",
+        name: "Matthew Lewis",
+        age: "37",
+        likes: "3.4",
+        image: "assets/images/homem4.jpg",
       ),
       const MoleculePetSitterBlock(
-        name: "Luis Oliveira",
-        age: "12",
-        likes: "68",
-        image: "assets/images/luis.jpeg",
+        name: "William Taylor",
+        age: "22",
+        likes: "4.0",
+        image: "assets/images/homem6.jpg",
       ),
     ];
   }

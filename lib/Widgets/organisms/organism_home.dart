@@ -18,23 +18,23 @@ class _OrganismHomeState extends State<OrganismHome> {
   _postsList() {
     return const [
       MoleculeHomePost(
-        name: "Daniel Bueno",
+        name: "Vin Diesel",
         description: "Rex <3",
-        profileImage: "assets/images/daniel.jpeg",
+        profileImage: "assets/images/homem1.jpg",
         postImage: "assets/images/pastorAlemao.jpg",
         likes: "10",
       ),
       MoleculeHomePost(
-        name: "Luís Oliveira",
+        name: "Joshua Turner",
         description: "one love: Tareco",
-        profileImage: "assets/images/luis.jpeg",
+        profileImage: "assets/images/homem3.jpg",
         postImage: "assets/images/persa.jpg",
         likes: "20",
       ),
       MoleculeHomePost(
-        name: "André Silva",
+        name: "Joanine Cena",
         description: "my big buddy",
-        profileImage: "assets/images/andre.jpeg",
+        profileImage: "assets/images/mulher1.jpg",
         postImage: "assets/images/saoBernardo.jpg",
         likes: "30",
       ),

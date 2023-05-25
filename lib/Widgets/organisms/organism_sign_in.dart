@@ -18,6 +18,7 @@ class _OrganismSignInState extends State<OrganismSignIn> {
   );
   String _userName = '';
   String _password = '';
+  String _feedbackMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +30,11 @@ class _OrganismSignInState extends State<OrganismSignIn> {
             Container(
               height: 100,
               width: 100,
-              decoration:const BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/images/logo.png"),),
-              borderRadius:BorderRadius.all(Radius.circular(8))
-              ),
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/logo.png"),
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
             ),
             _space,
             _inputs,
@@ -56,8 +58,15 @@ class _OrganismSignInState extends State<OrganismSignIn> {
         Input(
           hintText: 'Password',
           obscureText: true,
-         onValueChanged: (value) => setState(() => _password = value),
+          onValueChanged: (value) => setState(() => _password = value),
         ),
+        Text(
+          _feedbackMessage,
+          style: TextStyle(
+            color: Colors
+                .red, // Choose your desired color for the feedback message
+          ),
+        )
       ],
     );
   }
@@ -75,14 +84,18 @@ class _OrganismSignInState extends State<OrganismSignIn> {
     );
   }
 
-  _logIn(){
-    if(_userName == ConstantUserInfo.username && _password ==ConstantUserInfo.password){
+  _logIn() {
+    if (_userName == ConstantUserInfo.username &&
+        _password == ConstantUserInfo.password) {
       Navigator.pushNamed(context, ConstantRoutes.logged);
+    } else if (_userName.isEmpty) {
+      setState(() => _feedbackMessage = 'Please insert your username');
+    } else if (_password.isEmpty) {
+      setState(() => _feedbackMessage = 'Please insert your password');
+    } else {
+      setState(() => _feedbackMessage = 'Incorrect username or password');
     }
-    if(_userName.isEmpty){
-      return print('please, insert your user name');
-    }
-    if(_password.isEmpty){
+    if (_password.isEmpty) {
       return print('please, insert your password');
     }
 
